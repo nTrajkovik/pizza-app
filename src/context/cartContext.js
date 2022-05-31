@@ -44,7 +44,6 @@ const CartProvider = ({ children }) => {
       })
       .catch((error) => console.log(error));
   }
-
   const value = { pizzaProducts, cartItems, addToCart, removeFromCart, emptyCart, handleOrder, setPizzaProducts };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
