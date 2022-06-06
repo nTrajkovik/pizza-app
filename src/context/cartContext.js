@@ -1,7 +1,6 @@
 import React, { useState, createContext, useEffect } from "react";
 import { Navigate } from "react-router";
 import Api from "../Api";
-// import { pizzaProducts } from "../fakeData/pizzas";
 import ordering from "../pizzaordering/ordering";
 
 const CartContext = createContext();
@@ -9,9 +8,12 @@ const CartContext = createContext();
 const CartProvider = ({ children }) => {
   const [pizzaProducts, setPizzaProducts] = useState([]);
   useEffect(function(){
-      Api().get('/pizzas').then(response => {
-        setPizzaProducts(response.data);
-      })
+    Api().get('/pizzas').then(pizzas => { 
+        const data = pizzas.data.map((item) => {
+          return { ...item, id: item._id };
+        });
+        setPizzaProducts(data);
+    })
   },[])
   const [cartItems, setCartItems] = useState([]);
   const addToCart = (id, quantity, selectedPizzaSize) => {
@@ -28,22 +30,17 @@ const CartProvider = ({ children }) => {
     setCartItems([])
   }
 
-
   const handleOrder = () => {
     const email = prompt("Please enter your email: ", "");
     const address = prompt("Please enter your address: ", "");
-    Api()
-      .post("/orders", {
-        email,
-        address,
-        cartItems: cartItems,
-      })
-      .then(function () {
+    Api().post('/orders', { email, address, cartItems })
+      .then(() => {
         emptyCart();
-        alert('Fala sto kupuvate kaj nas')
+        alert('Fala sto kupuvate kaj nas');
       })
-      .catch((error) => console.log(error));
-  }
+      .catch((e) => console.error(e));
+  };
+
   const value = { pizzaProducts, cartItems, addToCart, removeFromCart, emptyCart, handleOrder, setPizzaProducts };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

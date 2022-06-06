@@ -10,7 +10,6 @@ const Cart = () => {
   const cartRef = useRef();
   useClickOutside(cartRef, () => setIsOpen(false));
 
-
   return (
     <div>
       {isOpen && (

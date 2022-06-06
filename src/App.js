@@ -7,8 +7,9 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Pizza from "./components/Pizza/Pizza";
 import Cart from "./components/Cart/Cart";
-import Admin from "./pages/Admin";
-import Orders from "./pages/Orders";
+import AdminPage from "./pages/Admin";
+import OrdersPage from "./pages/Orders";
+import TagManagerPage from "./pages/TagManager";
 
 function App() {
   return (
@@ -17,12 +18,13 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="pizza" element={<Home />}></Route>
-        <Route path="admin" element={<Admin />}></Route>
-        <Route path="orders" element={<Orders />}></Route>
         <Route path="pizza/:pizzaName" element={<Pizza />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path="*" element={<Navigate to="/pizza" replace />} />
+        <Route path="admin" element={<AdminPage />}></Route>
+        <Route path="tag-manager" element={<TagManagerPage />}></Route>
+        <Route path="orders" element={<OrdersPage />}></Route>
       </Routes>
       <Footer />
     </div>

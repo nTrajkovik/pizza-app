@@ -12,6 +12,14 @@ nav a{
   text-decoration: none;
 }
 
+#tags {
+  color: #fff;
+}
+
+#search{
+  color: #fff;
+}
+
 #pizzaMenu{
   display: flex;
   flex-wrap: wrap;
@@ -19,26 +27,20 @@ nav a{
   width: 100%;
 }
 
+#order{
+  color: #fff;
+}
+
 #admin{
   color: #fff;
 }
-#admin > form > label {
+#admin > label {
   width: 100%;
   display: flex;
   max-width: 400px;
 }
-#admin > form > label > input {
+#admin > label > input {
   margin-left: auto;
-}
-
-#orders{
-  color: #fff;
-}
-.order{
-  background: gray;
-  margin: 1rem;
-  border-radius: 10px;
-  padding: 1rem;
 }
 
 .product{
@@ -96,15 +98,40 @@ nav a{
   display: inline-block;
   vertical-align: middle;
 }
+#orders{
 
-#order{
+}
+.delete-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+.order{
+  position: relative;
   border: 0;
   border-radius: 10px;
   padding: 10px;
-  width: 200px;
-  margin: 5px;
+  margin: 15px;
   vertical-align: middle;
   background-color: #00ada4;
   color: #f7f7f7;
   font-weight: bold;
+}
+
+.order-confirmed {
+  background-color: green;
+}
+
+#order-btn{
+  position: relative;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 15px;
+  vertical-align: middle;
+  background-color: #00ada4;
+  color: #f7f7f7;
+  font-weight: bold;
+  cursor: pointer;
 }

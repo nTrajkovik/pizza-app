@@ -73,7 +73,7 @@ function Pizza() {
           </span>
         </div>
         <button
-          id="order"
+          id="order-btn"
           onClick={() => addToCart(currentPizza.id, counter, pizzaSize)}
         >
           Buy Pizza
